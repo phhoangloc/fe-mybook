@@ -13,7 +13,8 @@ import { setNarbar } from '../redux/reducer/narbarReducer';
 import { Link } from 'react-router-dom';
 import {AccountHeaderBox} from '../example/accountHeaderBox'
 
-export const Header = () => {
+export const Header = (props) => {
+  const {loginSuccess} = props
   const [mode,setNewMode]=useState(store.getState().mode)
 
   const updateData = () => {
@@ -31,16 +32,25 @@ export const Header = () => {
   }
 
   const [opacity,setOpacity]=useState("0")
+  const [zindex,setZindex]=useState("-1")
 
   return (
     <Grid container direction="row" sx={[Style.header,mode!=="dark"?Theme.light:Theme.dark]}>
         <Grid><MenuIcon sx={Style.header.icon} onClick={()=>narbarOpen()}/></Grid>
         <Grid sx={Style.header.title}>
-            <Link style={Style.a} to="/"><h1 style={Style.header.title.h1}>Name Page</h1></Link>
+            <Link style={Style.a} to="/"><h1 style={Style.header.title.h1}>Lock and ...</h1></Link>
         </Grid>
         <Grid>{mode.mode!=="dark"?<LightModeIcon sx={Style.header.icon} onClick={()=>changeMode()}/>:<DarkModeIcon sx={Style.header.icon} onClick={()=>changeMode()}/>}</Grid>
-        <Grid><AccountCircleIcon sx={Style.header.icon} onClick={()=>setOpacity(opacity!=1?"1":"0")}/></Grid>
-        <AccountHeaderBox style={{opacity:opacity}} onClick={()=>setOpacity("0")}/>
+        <Grid><AccountCircleIcon 
+          sx={Style.header.icon} 
+          onClick={()=>{
+            setOpacity(opacity!=="1"?"1":"0")
+            setZindex(zindex!=="5"?"5":"-1")
+          }}/></Grid>
+        <AccountHeaderBox 
+          style={{opacity:opacity,zIndex:zindex}} 
+          onClick={()=>{setOpacity("0");setZindex("-1")}} 
+          loginSuccess={loginSuccess}/>
         <Grid><ShoppingCartIcon sx={Style.header.icon}/></Grid>
     </Grid>
   )

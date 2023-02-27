@@ -3,8 +3,10 @@ import { Home } from "../../layout/home"
 import { Admin } from "../../layout/admin"
 import { Route, Switch } from "react-router-dom"
 import { HomePage } from "../../layout/home/home"
-import { Login } from "../../layout/home/user/login"
+import { Login } from "../../example/login"
 import { Book } from "../../layout/home/book"
+import {User} from"../../layout/home/user"
+import {CreateUser} from "../../example/createUser"
 const routes=[
     {
         path:"/admin",
@@ -20,6 +22,14 @@ const homeroutes=[
     {
         path:"/user/login",
         component:<Login/>
+    },    
+    {
+        path:"/user/ca",
+        component:<CreateUser/>
+    },
+    {
+        path:"/user",
+        component:<User/>
     },
     {
         path:"/book",

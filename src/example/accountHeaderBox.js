@@ -6,6 +6,7 @@ import store from '../redux/store'
 import { useState } from 'react'
 import Theme from '../asset/theme'
 export const AccountHeaderBox = (props) => {
+  const {loginSuccess}=props
     const [mode,setNewMode]=useState(store.getState().mode)
 
     const updateData = () => {
@@ -13,11 +14,25 @@ export const AccountHeaderBox = (props) => {
     }
   
     updateData()
+
+    const logOut=()=>{
+      localStorage.clear()
+      window.location.href="/"
+    }
   return (
-    <Grid sx={[Style.header.list,props.style,mode!=="dark"?Theme.light:Theme.dark]}>
-        <Link style={Style.a} to='/user/login' onClick={props.onClick}>
-            <Grid sx={Style.header.list.text}><p style={{margin:"0"}}>Login</p></Grid>
+    <Grid sx={[Style.header.list,props.style,mode!=="dark"?Theme.light.boxIn:Theme.dark.boxIn]}>
+
+        {loginSuccess?
+        <>
+        <Link style={Style.a} to='/user' onClick={props.onClick}>
+          <Grid sx={Style.header.list.text}><p style={{margin:"0"}}>Profile</p></Grid>
         </Link>
+        <Grid sx={Style.header.list.text}><p style={{margin:"0"}} onClick={()=>logOut()}>Log Out</p></Grid>
+        </>
+        :<Link style={Style.a} to='/user/login' onClick={props.onClick}>
+            <Grid sx={Style.header.list.text}><p style={{margin:"0"}}>Login</p></Grid>
+        </Link>}
+        
     </Grid>
   )
 }

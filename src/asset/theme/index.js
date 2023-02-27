@@ -12,6 +12,19 @@ const Theme={
         boxIn:{
             background:color4,
             color:"white"
+        },
+        login:{
+            background:color1,
+        },
+        user:{
+            narbar:{
+                background:"whitesmoke",
+                color:color5
+            },
+            content:{
+                background:"whitesmoke",
+                color:color5
+            }
         }
     },
     dark:{
@@ -19,9 +32,22 @@ const Theme={
         background:color5,
         color:"white",
         boxIn:{
-            background:color3,
+            background:"white",
             color:color4
-        }
+        },
+        login:{
+            background:"whitesmoke",
+        },
+        user:{
+            narbar:{
+                background:"whitesmoke",
+                color:color5
+            },
+            content:{
+                background:"whitesmoke",
+                color:color5
+            }
+        } 
     }
 }
 

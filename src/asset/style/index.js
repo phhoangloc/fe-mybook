@@ -1,3 +1,4 @@
+import accBack from '../img/accountbackground.jpg'
 
 const color1="#ffb0a9"
 const color2="#f9d678"
@@ -8,7 +9,13 @@ const color5="#13313d"
 const Style={
     a:{
         textDecoration:"none",
-        color:"unset"
+        color:"unset",
+    },
+    h1:{
+        margin:"0"
+    },
+    p:{
+        margin:"0"
     },
     header:{
         height:"50px",
@@ -42,7 +49,7 @@ const Style={
                 cursor:"pointer",
                 margin:"0",
                 '&:hover':{
-                    background:"black",
+                    background:"lightgrey",
                     color:"white",
                     transition:"all 0.25s",
                 }
@@ -117,7 +124,98 @@ const Style={
                 }
             }
         }
-    }
+    },
+    user:{
+        width:"100%",
+        height:"100vh",
+        padding:"75px 5%",
+        BoxIn:{
+            width:"80%",
+            minHeight:"400px",
+            boxShadow:"3px 3px 5px grey",
+            margin:"auto",
+            textAlign:"center",
+            display:"flex",
+            flexDirection:"column",
+            justifyContent:"center",
+            background:`url(${accBack}) no-repeat center`,
+            backgroundSize:"cover",
+        },
+        BoxDetail:{
+            width:"100%",
+            maxWidth:"375px",
+            height:"100%",
+            margin:"auto 0 auto auto",
+        },
+        input:{
+            width:"80%",
+            height:"40px",
+            fontSize:"17px",
+            margin:"10px auto",
+            background:"rgba(255,255,255,0.2)",
+            border:"none",
+            color:color5,
+            '&:focus':{
+                outline:"none",
+                background:"rgba(255,255,255,0.5)"
+            }
+        },
+        button:{
+            width:"50%",
+            height:"40px",
+            margin:"20px auto 10px",
+        },
+
+        h1:{
+            margin:"0",
+            color:color5,
+        },
+        ptext:{
+            margin: "10px auto",
+            fontSize:"12px",
+            color:color5,
+        },
+    },
+    userPage:{
+        userNarbar:{
+            width:"max-content",
+            margin:"0 5% 0 auto",
+            BoxIn:{
+                margin:"0px",
+                boxSizing:"border-box",
+                cursor:"pointer"
+            },
+            ptext:{
+                width:"100px",
+                textAlign:"center",
+                padding:"5px",
+                fontWeight:"bold",
+                margin:"0"
+            },
+            h3:{
+                margin:"0"
+            }
+        },
+        userContent:{
+            width:"90%",
+            margin:"auto",
+            minHeight:"100vh",
+            h2:{
+                margin:"0"
+            }
+        }
+    },
+    popup:{
+        position:"absolute",
+        top:"50px",
+        width:"100%",
+        background:color3,
+        color:"white",
+        transition:"all 0.5s",
+        overflow:"hidden",
+        lineHeight:"50px",
+        textAlign:"center",
+    },
 }
 
 export default Style
