@@ -18,11 +18,11 @@ export const AccountHeaderBox = (props) => {
     const logOut=()=>{
       localStorage.clear()
       window.location.href="/"
-    }
+  }
   return (
     <Grid sx={[Style.header.list,props.style,mode!=="dark"?Theme.light.boxIn:Theme.dark.boxIn]}>
 
-        {loginSuccess?
+        {loginSuccess.success?
         <>
         <Link style={Style.a} to='/user' onClick={props.onClick}>
           <Grid sx={Style.header.list.text}><p style={{margin:"0"}}>Profile</p></Grid>

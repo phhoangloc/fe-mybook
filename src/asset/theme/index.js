@@ -16,16 +16,6 @@ const Theme={
         login:{
             background:color1,
         },
-        user:{
-            narbar:{
-                background:"whitesmoke",
-                color:color5
-            },
-            content:{
-                background:"whitesmoke",
-                color:color5
-            }
-        }
     },
     dark:{
         mode:"dark",
@@ -38,16 +28,6 @@ const Theme={
         login:{
             background:"whitesmoke",
         },
-        user:{
-            narbar:{
-                background:"whitesmoke",
-                color:color5
-            },
-            content:{
-                background:"whitesmoke",
-                color:color5
-            }
-        } 
     }
 }
 

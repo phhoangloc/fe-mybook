@@ -12,13 +12,13 @@ export const User = () => {
   const [userData,setUserData]=useState()
 
   const getUserLoginFromToken= async()=>{
-    const result= await AuthenUserApi.UserLogin()
+    const result= await AuthenUserApi.GetUserAuthen()
     setUserData(result.data[0])
   }
 
   useEffect(()=>{
     getUserLoginFromToken()
-  },[])
+  },[userData])
 
   const [mode,setNewMode]=useState(store.getState().mode)
 
@@ -28,16 +28,16 @@ export const User = () => {
   
   update()
   const [i,seti]=useState(0)
-
-  console.log(userData)
   
   return (
     <Grid sx={[Style.userPage,mode!=="dark"?Theme.light:Theme.dark]}>
-      <UserNarbar 
-        i={i}
-        onclickProfile={()=>seti(0)}
-        onclickBook={()=>seti(1)}/>
-      <UserContent data={userData} i={i}/>
+      <Grid sx={[Style.userPage.BoxIn,mode!=="dark"?Theme.light.boxIn:Theme.dark.boxIn]}>
+        <UserNarbar 
+          i={i}
+          onclickProfile={()=>seti(0)}
+          onclickBook={()=>seti(1)}/>
+        <UserContent data={userData} i={i}/>
+      </Grid>
     </Grid>
   )
 }

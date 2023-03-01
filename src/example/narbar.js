@@ -21,7 +21,6 @@ export const Narbar = () => {
   
   const narbarClose=()=>{
     store.dispatch(setNarbar("0%"))
-    console.log(store.getState().narbar)
   }
   return (
     <Grid sx={[Style.narbar,mode!="dark"?Theme.light.boxIn:Theme.dark.boxIn,width]}>

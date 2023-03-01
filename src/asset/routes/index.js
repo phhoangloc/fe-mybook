@@ -6,7 +6,8 @@ import { HomePage } from "../../layout/home/home"
 import { Login } from "../../example/login"
 import { Book } from "../../layout/home/book"
 import {User} from"../../layout/home/user"
-import {CreateUser} from "../../example/createUser"
+import { CreateUser } from "../../example/createUser"
+import { BookDetail } from "../../layout/home/book/bookDetail/index"
 const routes=[
     {
         path:"/admin",
@@ -30,6 +31,10 @@ const homeroutes=[
     {
         path:"/user",
         component:<User/>
+    },
+    {
+        path:"/book/:slug",
+        component:<BookDetail/>
     },
     {
         path:"/book",

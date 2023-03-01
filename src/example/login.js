@@ -39,17 +39,17 @@ export const Login = () => {
     }
 
     return (
-    <Grid sx={[Style.user,mode!=="dark"?Theme.light:Theme.dark]}>
-        <Grid sx={[Style.user.BoxIn]}>
-          <Box sx={[Style.user.BoxDetail]}>
-            <h1 style={Style.user.h1}>Login</h1>
+    <Grid sx={[Style.homepage,mode!=="dark"?Theme.light:Theme.dark]}>
+        <Grid sx={[Style.homepage.BoxIn]}>
+          <Box sx={[Style.homepage.BoxDetail]}>
+            <h1 style={Style.homepage.h1}>Login</h1>
             <input placeholder='username' type="text" onChange={(e)=>setUsername(e.target.value)}></input>
             <input placeholder='password' type="password" onChange={(e)=>setPassword(e.target.value)}></input>
-            {username!==undefined && password !==undefined && username!=="" && password !==""?<button style={Style.user.button} onClick={()=>LoginFuntion()}>Log In</button>:null}
+            {username!==undefined && password !==undefined && username!=="" && password !==""?<button style={Style.homepage.button} onClick={()=>LoginFuntion()}>Log In</button>:null}
             <Link to="/user/ca" style={Style.a}>
-              <p style={Style.user.ptext}>Create Account</p>
+              <p style={Style.homepage.ptext}>Create Account</p>
             </Link>
-            <p style={Style.user.ptext}>Forget Password ?</p>
+            <p style={Style.homepage.ptext}>Forget Password ?</p>
           </Box>
         </Grid>
     </Grid>
