@@ -11,6 +11,11 @@ const UpdateCover = (fileImage) => {
     formdata.append('file', fileImage)
     return Api.post(url + 'book/image/',formdata)
 }
+const UpdateAvata = (fileImage) => {
+    const formdata = new FormData()
+    formdata.append('file', fileImage)
+    return Api.post(url + 'user/avata/',formdata)
+}
 const UpdateBook = (id,body) => {
     return Api.put(url+"book/"+id,body)
 }
@@ -23,6 +28,7 @@ const AuthenUserApi={
     UpdateCover,
     UpdateBook,
     DeleteBook,
+    UpdateAvata,
 }
 
 export default AuthenUserApi

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import BookApi from '../api/book'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import {Grid,Box} from '@mui/material'
 import store from '../redux/store'
@@ -18,7 +17,7 @@ export const Book = (props) => {
     
     const returnData=data.length? 
       data.map((item, index) =>
-        <Link to={'/book/'+item.slug} key={index}>
+        <Link to={'/book/'+item.slug} key={index} style={Style.a}>
           <Grid item  xs={6} sm={4} md={3} sx={[Style.book.box]}>
             <Box>
                 <img src={'http://localhost:4000/img/bookcover/'+item.img} style={Style.book.box.imgbox.img}/>

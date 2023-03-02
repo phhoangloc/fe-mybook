@@ -7,20 +7,21 @@ const color3="#b6ddda"
 const color4="#01877e"
 const color5="#13313d"
 
-const Style={
+const Style = {
     a:{
         textDecoration:"none",
         color:"unset",
     },
     h1:{
-        margin:"0"
+        margin: "0",
     },
     p:{
-        margin:"0"
+        margin: "0",
     },
     header:{
         height:"50px",
-        lineHeight:"50px",
+        lineHeight: "50px",
+        fontSize:"15px",
         title:{
             margin:"0 auto",
             h1:{margin:"0"}
@@ -121,7 +122,7 @@ const Style={
             },
             imgbox:{
                 img:{
-                    width:"100%"
+                    width:"100%",
                 }
             }
         }
@@ -184,8 +185,10 @@ const Style={
             textAlign:"center",
             BoxIn:{
                 margin: "0 auto",
-                background: "white",
-                padding:"5%",
+                background: "whitesmoke",
+                padding: "5%",
+                color: color5,
+                boxShadow: "3px 3px 5px grey",
                 input: {
                     width: "90%",
                     height:"30px",
@@ -203,6 +206,7 @@ const Style={
                     height:"200px",
                     margin: "0 5% 10px",
                     fontSize: "15px",
+                    fontFamily: "math",
                     '&:focus': {
                         outline:"none",
                     }
@@ -289,6 +293,70 @@ const Style={
                     cursor: "pointer",
                 }
             }  
+        },
+        profile: {
+            maxWidth: "900px",
+            margin: "auto",
+            boxSizing: "border-box",
+            padding: "10px",
+            imgBox: {
+                width: "200px",
+                height:"200px",
+                borderRadius: "50%",
+                background: "white",
+                margin: "25px auto",
+                border: "1px solid",
+                position: "relative",
+                overflow:"hidden",
+                svg: {
+                    position: "absolute",
+                    right: "15%",
+                    bottom:"15%",
+                    cursor: "pointer",
+                    color: "grey",
+                    border: "1px solid",
+                    borderRadius: "50%",
+                    padding: "5px",
+                    transition: "all 0.25s",
+                    background:"white",
+                    '&:hover':{
+                        color: color5,
+                        transform:"scale(1.1)"
+                    }
+                },
+                img: { width: "100%" },
+            },
+            Box:{
+                textAlign: "left",
+                boxSizing: "border-box",
+                padding: "20px 5%",
+                button:{width:"100px",padding:"5px 10px",margin:" 10px auto"},
+                h2: {
+                    textAlign:"center",
+                },
+                h3:{
+                    margin: "5px 0",
+                    borderBottom: "1px solid",
+                    display: "flex",
+                    span:{
+                        fontWeight: "400",
+                        width:"125px",
+                    },
+                    position: "relative",
+
+                    svg: {
+                        position: "absolute",
+                        top: "5px",
+                        right:"0px",
+                        cursor: "pointer",
+                        color: color3,
+                        '&:hover':{
+                            color: color5,
+                        }
+                    },
+                    input: { width: "100%", maxWidth: "375px" },
+                }
+            }
         }
     },
     popup:{
