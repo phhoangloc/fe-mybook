@@ -14,7 +14,8 @@ import { Link } from 'react-router-dom';
 import {AccountHeaderBox} from '../example/accountHeaderBox'
 
 export const Header = (props) => {
-  const {loginSuccess} = props
+  const { loginSuccess } = props
+  const avata = loginSuccess.data && loginSuccess.data.infor && loginSuccess.data.infor.avata
   const [mode,setNewMode]=useState(store.getState().mode)
 
   const updateData = () => {
@@ -24,7 +25,8 @@ export const Header = (props) => {
   updateData()
 
   const changeMode=()=>{
-    store.dispatch(setMode(mode!=="dark"?"dark":"light"))
+    store.dispatch(setMode(mode !== "dark" ? "dark" : "light"))
+    console.log(loginSuccess.data.infor.avata)
   }
 
   const narbarOpen=()=>{
@@ -41,16 +43,25 @@ export const Header = (props) => {
             <Link style={Style.a} to="/"><h1 style={Style.header.title.h1}>Lock and ...</h1></Link>
         </Grid>
         <Grid>{mode.mode!=="dark"?<LightModeIcon sx={Style.header.icon} onClick={()=>changeMode()}/>:<DarkModeIcon sx={Style.header.icon} onClick={()=>changeMode()}/>}</Grid>
-        <Grid><AccountCircleIcon 
+        <Grid>
+          {loginSuccess.success?
+            <img src={`http://localhost:4000/img/avata/${avata}`} 
+            onClick={()=>{
+              setOpacity(opacity!=="1"?"1":"0")
+              setZindex(zindex!=="5"?"5":"-1")
+            }}
+            />:
+          <AccountCircleIcon 
           sx={Style.header.icon} 
           onClick={()=>{
             setOpacity(opacity!=="1"?"1":"0")
             setZindex(zindex!=="5"?"5":"-1")
-          }}/></Grid>
-        <AccountHeaderBox 
+          }}/>}
+        </Grid>
+          <AccountHeaderBox 
           style={{opacity:opacity,zIndex:zindex}} 
           onClick={()=>{setOpacity("0");setZindex("-1")}} 
-          loginSuccess={loginSuccess}/>
+          loginSuccess={loginSuccess} />
         <Grid><ShoppingCartIcon sx={Style.header.icon}/></Grid>
     </Grid>
   )

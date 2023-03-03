@@ -9,7 +9,7 @@ import Nocover from '../../../../asset/img/nocover.png'
 import EditIcon from '@mui/icons-material/Edit';
 import AuthenUserApi from '../../../../api/authenUser'
 import { setPopUp } from '../../../../redux/reducer/popUpReducer'
-import { textAlign } from '@mui/system'
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 export const BookDetail = () => {
 
@@ -20,11 +20,14 @@ export const BookDetail = () => {
   const [book, setBook] = useState(null)
   
   const [imgPre,setImgPre]=useState()
-  const [file, setFile] = useState()
+
+  const [fileIMG, setFileIMG] = useState()
+  const [filePDF, setFilePDF] = useState()
   const [name,setName]=useState()
   const [author,setAuthor]=useState()
   const [detail, setDetail] = useState()
   const [owner,setOwner]=useState()
+
   const body = {name,author,owner,slug,detail}
 
   //DATA
@@ -32,7 +35,7 @@ export const BookDetail = () => {
   const getUserLoginFromToken= async()=>{
     const result = await AuthenUserApi.GetUserAuthen()
     if (result.success) {
-      setOwner(result.data[0]._id)
+      setOwner(result.data._id)
     }
   }
 
@@ -65,6 +68,7 @@ export const BookDetail = () => {
   update()
 
   const coverpic=useRef()
+  const uploadPdf=useRef()
 
   const changeCoverPic = (e) => {
     var file = e.target.files[0];
@@ -74,36 +78,33 @@ export const BookDetail = () => {
         reader.readAsDataURL(file);
         reader.onloadend = function() {
             setImgPre(reader.result);
-            setFile(file)
+            setFileIMG(file)
+        }
+    }
+  }
+  
+  const changePdfFile = (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+        reader.readAsDataURL(file);
+        reader.onloadend = function() {
+            setFilePDF(file)
         }
     }
   }
 
   const CreateBook = async() => {
-    const img =file && await AuthenUserApi.UpdateCover(file)
+    const img =fileIMG && await AuthenUserApi.UpdateCover(fileIMG)
+    const pdf =filePDF && await AuthenUserApi.UpdatePdf(filePDF)
     if (img) { body.img = img } 
+    if (pdf) { body.pdf = pdf } 
     const result = await AuthenUserApi.CreatBook(body)
     if(result.success){
       store.dispatch(setPopUp({status:"open", success: result.success, message:result.msg}))
       setTimeout(() => {
         store.dispatch(setPopUp({ status:"close", msg: "" }))
-        window.location.href="/"
-    }, 1000)
-    }else{
-      store.dispatch(setPopUp({status:"open", success: result.success, message:result.msg}))
-      setTimeout(() => {
-        store.dispatch(setPopUp({ status:"close", msg: "" }))
-      }, 1000)
-    }
-  }
-  const UpdateBook = async (id) => {
-    const img = file && await AuthenUserApi.UpdateCover(file)
-    if (img) { body.img = img } 
-    const result = await AuthenUserApi.UpdateBook(id,body)
-    if(result.success){
-      store.dispatch(setPopUp({status:"open", success: result.success, message:result.msg}))
-      setTimeout(() => {
-        store.dispatch(setPopUp({ status: "close", msg: "" }))
         window.location.reload()
     }, 1000)
     }else{
@@ -113,15 +114,39 @@ export const BookDetail = () => {
       }, 1000)
     }
   }
+  const UpdateBook = async (id) => {
+    const img =fileIMG && await AuthenUserApi.UpdateCover(fileIMG)
+    const pdf =filePDF && await AuthenUserApi.UpdatePdf(filePDF)
+    if (img) { body.img = img } 
+    if (pdf) { body.pdf = pdf } 
+    const result = await AuthenUserApi.UpdateBook(id,body)
+    if(result.success){
+      store.dispatch(setPopUp({status:"open", success: result.success, message:result.msg}))
+      setTimeout(() => {
+        store.dispatch(setPopUp({ status: "close", msg: "" }))
+        window.location.reload()
+    }, 2000)
+    }else{
+      store.dispatch(setPopUp({status:"open", success: result.success, message:result.msg}))
+      setTimeout(() => {
+        store.dispatch(setPopUp({ status:"close", msg: "" }))
+        window.location.reload()
+      }, 2000)
+    }
+  }
 
   return (
     edit ?
     <Grid sx={[mode !== "dark" ? Theme.light : Theme.dark]}>
       <Grid container sx={[Style.homepage.BoxBookDetail]}>
         <Grid item sx={[Style.homepage.BoxBookDetail.BoxIn]} xs={12} sm={4}>
-          <img src={imgPre || book && 'http://localhost:4000/img/bookcover/'+ book.img || Nocover} />
+          <img src={imgPre || (book && 'http://localhost:4000/img/bookcover/'+ book.img) || Nocover} />
           <input type="file" ref={coverpic} style={{ display: "none" }} onChange={(e) => changeCoverPic(e)} ></input>
           <EditIcon onClick={() => coverpic.current.click()}></EditIcon>
+
+          <input type="file" ref={uploadPdf} style={{ display: "none" }} onChange={(e) => changePdfFile(e)} ></input>
+          <UploadFileIcon onClick={() => uploadPdf.current.click()} />
+
         </Grid>
         <Grid item sx={[Style.homepage.BoxBookDetail.BoxIn]} xs={12} sm={8}>
           <input placeholder='name' defaultValue={book && book.name} onChange={(e) => setName(e.target.value)}></input>

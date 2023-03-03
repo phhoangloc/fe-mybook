@@ -12,14 +12,14 @@ export const UserNarbar = (props) => {
     <Grid container sx={[Style.userPage.narbar]}>
       <Grid sx={[
         Style.userPage.narbar.title,
-        i === 0 ? selecttitle
+        i === 1 ? selecttitle
           : null
       ]}>
           <p  onClick={onclickProfile} style={Style.userPage.narbar.title.ptext}>Profile</p>
         </Grid>
       <Grid sx={[
         Style.userPage.narbar.title,
-        i === 1 ? selecttitle
+        i === 2 ? selecttitle
           : null
       ]}>
           <p onClick={onclickBook} style={Style.userPage.narbar.title.ptext}>Book</p>

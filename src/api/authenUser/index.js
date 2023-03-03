@@ -6,6 +6,13 @@ const GetUserAuthen=()=>{
 const CreatBook=(body)=>{
     return Api.post(url+'book',body)
 }
+
+const UpdatePdf = (fileImage) => {
+    const formdata = new FormData()
+    formdata.append('file', fileImage)
+    return Api.post(url + 'book/pdf/',formdata)
+}
+
 const UpdateCover = (fileImage) => {
     const formdata = new FormData()
     formdata.append('file', fileImage)
@@ -15,6 +22,11 @@ const UpdateAvata = (fileImage) => {
     const formdata = new FormData()
     formdata.append('file', fileImage)
     return Api.post(url + 'user/avata/',formdata)
+}
+
+const UpdateProfileInfor = (infor) => {
+    const body={infor}
+    return Api.put(url+"user/a",body)
 }
 const UpdateBook = (id,body) => {
     return Api.put(url+"book/"+id,body)
@@ -29,6 +41,8 @@ const AuthenUserApi={
     UpdateBook,
     DeleteBook,
     UpdateAvata,
+    UpdateProfileInfor,
+    UpdatePdf
 }
 
 export default AuthenUserApi

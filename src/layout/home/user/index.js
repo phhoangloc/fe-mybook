@@ -10,10 +10,15 @@ import Theme from '../../../asset/theme'
 
 export const User = () => {
   const [userData,setUserData]=useState()
+  const [i,seti]=useState(1)
 
   const getUserLoginFromToken= async()=>{
     const result= await AuthenUserApi.GetUserAuthen()
-    setUserData(result.data[0])
+    if(result.success){
+    setUserData(result.data)
+    }else{
+      seti(0)
+    }
   }
 
   useEffect(()=>{
@@ -27,15 +32,14 @@ export const User = () => {
     }
   
   update()
-  const [i,seti]=useState(0)
-  
   return (
     <Grid sx={[Style.userPage,mode!=="dark"?Theme.light:Theme.dark]}>
       <Grid sx={[Style.userPage.BoxIn,mode!=="dark"?Theme.light.boxIn:Theme.dark.boxIn]}>
-        <UserNarbar 
+        {i!=0?
+          <UserNarbar 
           i={i}
-          onclickProfile={()=>seti(0)}
-          onclickBook={()=>seti(1)}/>
+          onclickProfile={()=>seti(1)}
+          onclickBook={()=>seti(2)}/>:null}
         <UserContent data={userData} i={i}/>
       </Grid>
     </Grid>

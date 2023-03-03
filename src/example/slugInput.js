@@ -1,5 +1,6 @@
 import React from 'react'
 import Style from '../asset/style'
+import { Link } from 'react-router-dom'
 import { Box } from '@mui/material'
 import store from '../redux/store'
 import { useState } from 'react'
@@ -17,7 +18,7 @@ export const SlugInput = () => {
   return (
     <Box sx={[Style.popup,{height:slugInputHeight}]}>
       <p style={Style.p}>link:localhost:3000/book/<input placeholder='slug' onChange={(e)=>setSlug(e.target.value)}/></p>
-      <button onClick={()=>{window.location.href=`/book/${slug}`}}>ok</button>
+      <Link to ={`/book/${slug}`}><button onClick={()=>(store.dispatch(setSlugInput("0px")))}>ok</button></Link>
       <button onClick={() =>(store.dispatch(setSlugInput("0px")))}>cancel</button>
     </Box>
   )

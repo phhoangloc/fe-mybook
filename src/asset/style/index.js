@@ -26,6 +26,17 @@ const Style = {
             margin:"0 auto",
             h1:{margin:"0"}
         },
+        img:{
+            cursor:"pointer",
+            width:"30px",
+            height:"30px",
+            padding:"5px",
+            margin:"5px",
+            borderRadius:"50%",
+            '&:hover':{
+                background:color3,
+            }
+        },
         icon:{
             width:"30px",
             height:"30px",
@@ -44,7 +55,7 @@ const Style = {
             right: "5px",
             textAlign: "center",
             borderRadius: "5px",
-            boxShadow: '1px 1px 3px grey',
+            boxShadow: '1px 1px 5px',
             "opacity": "0",
             transition:"all 0.25s",
             text:{
@@ -229,7 +240,7 @@ const Style = {
                     opacity:"0.5",
                     color:color5,
                     cursor:"pointer",
-                    margin:"20px 0",
+                    margin:"20px 5px ",
                     '&:hover': {
                         opacity:"1",
                     }
@@ -263,6 +274,9 @@ const Style = {
             }
         },
         content: {
+            h1:{
+                textAlign:"center"
+            },
             book: {
                 width: "100%",
                 margin: "auto",
@@ -292,7 +306,7 @@ const Style = {
                     boxShadow: "1px 1px 5px",
                     cursor: "pointer",
                 }
-            }  
+            }
         },
         profile: {
             maxWidth: "900px",

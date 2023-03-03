@@ -17,14 +17,13 @@ export const Book = (props) => {
     
     const returnData=data.length? 
       data.map((item, index) =>
-        <Link to={'/book/'+item.slug} key={index} style={Style.a}>
+        
           <Grid item  xs={6} sm={4} md={3} sx={[Style.book.box]}>
             <Box>
-                <img src={'http://localhost:4000/img/bookcover/'+item.img} style={Style.book.box.imgbox.img}/>
+              <Link to={'/book/'+item.slug} key={index}><img src={'http://localhost:4000/img/bookcover/'+item.img} style={Style.book.box.imgbox.img}/></Link>
             </Box>
             <h4 style={Style.book.box.title}>{item.name}</h4>
           </Grid>
-        </Link>
     ):null
 
   return (
