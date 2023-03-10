@@ -5,28 +5,28 @@ import { Narbar } from '../../example/narbar'
 import { SwitchCustomHomeRoutes } from '../../asset/routes'
 import { PopUp } from '../../example/popup'
 import AuthenUserApi from '../../api/authenUser'
-import {SlugInput} from '../../example/slugInput'
+import { SlugInput } from '../../example/slugInput'
 
 export const Home = () => {
 
-  const [loginSuccess,setLoginSuccess]=useState(false)
+  const [loginSuccess, setLoginSuccess] = useState(false)
 
-  const getUserLoginFromToken= async()=>{
-    const result= await AuthenUserApi.GetUserAuthen()
+  const getUserLoginFromToken = async () => {
+    const result = await AuthenUserApi.GetUserAuthen()
     setLoginSuccess(result)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getUserLoginFromToken()
-  },[])
+  }, [])
 
   return (
     <Box>
-        <Header loginSuccess={loginSuccess}/>
+      <Header loginSuccess={loginSuccess} />
       <PopUp />
-      <SlugInput/>
-      <Narbar/>
-        {SwitchCustomHomeRoutes}
+      <SlugInput />
+      <Narbar />
+      {SwitchCustomHomeRoutes}
     </Box>
   )
 }
