@@ -4,6 +4,7 @@ import NarbarReducer from "./reducer/narbarReducer";
 import PopUpReducer from "./reducer/popUpReducer";
 import SlugInputReducer from "./reducer/slugInputReducer";
 import EditReducer from "./reducer/editReducer";
+import CartReducer from "./reducer/cartReducer";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         popup: PopUpReducer.reducer,
         slugInput: SlugInputReducer.reducer,
         edit: EditReducer.reducer,
+        cart: CartReducer.reducer,
     }
 })
 

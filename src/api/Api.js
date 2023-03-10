@@ -1,8 +1,8 @@
 import axios from 'axios';
 // import storage from '../storage/Storage';
-
+const url = "http://localhost:4000/"
 const axiosClient = axios.create({
-    baseURL: `http://localhost:4000/`,
+    baseURL: url,
     timeout: 5000, // default is `0` (no timeout)
     responseType: 'json'
 });

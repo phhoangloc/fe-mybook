@@ -11,8 +11,6 @@ import AuthenUserApi from '../api/authenUser';
 import { setPopUp } from '../redux/reducer/popUpReducer';
 import { setEdit } from '../redux/reducer/editReducer';
 import noAvata from '../asset/img/loginavata.png'
-import CheckIcon from '@mui/icons-material/Check';
-import CancelIcon from '@mui/icons-material/Cancel';
 import { Input } from '../component/input';
 export const UserContent = (props) => {
 

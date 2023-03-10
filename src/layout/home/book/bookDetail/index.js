@@ -34,6 +34,7 @@ export const BookDetail = () => {
   const body = { name, author, owner, slug, detail }
 
   //DATA
+
   //DATA User
   const getUserLoginFromToken = async () => {
     const result = await AuthenUserApi.GetUserAuthen()
@@ -150,11 +151,17 @@ export const BookDetail = () => {
       lender: ownerBook,
       books: [book._id]
     }
-
-    // const result = await AuthenUserApi.borrowBook(body)
-    console.log(owner)
+    if(owner === ownerBook){
+      store.dispatch(setPopUp({ status:"open", message: "borrower and lender is not be the same" }))
+      setTimeout(() => {
+        store.dispatch(setPopUp({ status:"close", message: "" }))
+      }, 2000)
+    }else{
+      const result = await AuthenUserApi.borrowBook(body)
+    }
+    
   }
-
+  
   return (
     edit ?
       <Grid sx={[mode !== "dark" ? Theme.light : Theme.dark]}>

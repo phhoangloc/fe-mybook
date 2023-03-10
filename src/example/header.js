@@ -12,6 +12,7 @@ import { setMode } from '../redux/reducer/modeReducer';
 import { setNarbar } from '../redux/reducer/narbarReducer';
 import { Link } from 'react-router-dom';
 import { AccountHeaderBox } from '../example/accountHeaderBox'
+import { setCart } from '../redux/reducer/cartReducer';
 
 export const Header = (props) => {
   const { loginSuccess } = props
@@ -61,7 +62,7 @@ export const Header = (props) => {
         style={{ opacity: opacity, zIndex: zindex }}
         onClick={() => { setOpacity("0"); setZindex("-1") }}
         loginSuccess={loginSuccess} />
-      <Grid><ShoppingCartIcon sx={Style.header.icon} /></Grid>
+      <Grid><ShoppingCartIcon sx={Style.header.icon} onClick={()=>{store.dispatch(setCart("100%"))}}/></Grid>
     </Grid>
   )
 }

@@ -27,13 +27,13 @@ export const Login = () => {
         localStorage.setItem('token', "Bearer " + result.data.token)
         store.dispatch(setPopUp({status:"open", success: result.success, message:result.message}))
         setTimeout(() => {
-          store.dispatch(setPopUp({ status:"close", msg: "" }))
+          store.dispatch(setPopUp({ status:"close", message: "" }))
           window.location.href="/"
       }, 2000)
       }else{
         store.dispatch(setPopUp({status:"open", success: result.success, message:result.message}))
         setTimeout(() => {
-          store.dispatch(setPopUp({ status:"close", msg: "" }))
+          store.dispatch(setPopUp({ status:"close", message: "" }))
       }, 2000)
       }
     }

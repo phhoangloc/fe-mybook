@@ -6,6 +6,7 @@ import { SwitchCustomHomeRoutes } from '../../asset/routes'
 import { PopUp } from '../../example/popup'
 import AuthenUserApi from '../../api/authenUser'
 import { SlugInput } from '../../example/slugInput'
+import { Cart } from '../../example/cart'
 
 export const Home = () => {
 
@@ -23,6 +24,7 @@ export const Home = () => {
   return (
     <Box>
       <Header loginSuccess={loginSuccess} />
+      <Cart/>
       <PopUp />
       <SlugInput />
       <Narbar />

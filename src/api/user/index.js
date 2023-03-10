@@ -1,5 +1,5 @@
 import Api from "../Api"
-const url="http://localhost:4000/user/"
+const url= "http://localhost:4000/user/"
 const Login=(body)=>{
     return Api.post(url+'login',body)
 }

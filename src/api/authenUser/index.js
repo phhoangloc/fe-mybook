@@ -37,6 +37,15 @@ const DeleteBook = (id) => {
 const borrowBook = (body) => {
     return Api.post(url + "/borrow", body)
 }
+const viewcart = () => {
+    return Api.get(url + "/borrow")
+}
+const deletecart = (id) => {
+    return Api.delete(url + "/borrow/"+id)
+}
+const deleteAllcart = () => {
+    return Api.post(url + "/deleteAllCart/")
+}
 const AuthenUserApi = {
     GetUserAuthen,
     CreatBook,
@@ -46,7 +55,10 @@ const AuthenUserApi = {
     UpdateAvata,
     UpdateProfileInfor,
     UpdatePdf,
-    borrowBook
+    borrowBook,
+    viewcart,
+    deletecart,
+    deleteAllcart
 }
 
 export default AuthenUserApi

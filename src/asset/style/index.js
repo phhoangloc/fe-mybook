@@ -375,7 +375,7 @@ const Style = {
                             color: color5,
                         }
                     },
-                    input: { width: "100%", maxWidth: "375px" },
+                    input: { width: "100%",marginLeft:"10px"},
                 }
             }
         }
@@ -402,6 +402,70 @@ const Style = {
             }
         }
     },
+    cart:{
+        position: "fixed",
+        right: "0",
+        top:"0",
+        height: "calc(100vh)",
+        width: "100%",
+        maxWidth: "300px",
+        transition: "all 1s",
+        overflowX:"hidden",
+        overflowY:"scroll",
+        backgroundColor:"whitesmoke",
+        zIndex:"10",
+        box:{
+            width: "270px",
+            margin:"auto",
+            padding: "20px 10px",
+            border:"1px solid grey",
+            borderRadius:"5px",
+            position:"relative",
+        },
+        h2:{
+            textAlign:"center",
+            margin:"0",
+            width:"300px",
+        },
+        h3:{
+            fontSize:"15px",
+            margin:"0",
+            span:{
+                fontWeight:"400",
+
+            }
+        },
+        li:{
+            listStyle:"none",
+            paddingLeft:"10px",
+            fontSize:"13px",
+        },
+        button:{
+            height:"30px",
+            width:"75px",
+            background:"white",
+            border:"1px solid grey",
+            margin: "10px 15px",
+            cursor:"pointer",
+            fontSize:"12px",
+            borderRadius:"5px",
+            "&:active":{
+                border: "3px solid grey",
+                borderBottom: "1px solid",
+                borderRight: "1px solid",
+                color:"grey"
+            }
+
+        },
+        svg:{
+            cursor:"pointer"
+        },
+        removeicon:{
+            position:"absolute",
+            right:"5px",
+            top:"5px",
+        }
+    }
 }
 
 export default Style

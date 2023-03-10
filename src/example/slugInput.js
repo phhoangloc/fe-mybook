@@ -5,6 +5,7 @@ import { Box } from '@mui/material'
 import store from '../redux/store'
 import { useState } from 'react'
 import { setSlugInput } from '../redux/reducer/slugInputReducer'
+import { setEdit } from '../redux/reducer/editReducer'
 export const SlugInput = () => {
   const [slugInputHeight, setSlugInputHeight] = useState(store.getState().slugInput)
   
@@ -19,7 +20,7 @@ export const SlugInput = () => {
     <Box sx={[Style.popup,{height:slugInputHeight}]}>
       <p style={Style.p}>link:localhost:3000/book/<input placeholder='slug' onChange={(e)=>setSlug(e.target.value)}/></p>
       <Link to ={`/book/${slug}`}><button onClick={()=>(store.dispatch(setSlugInput("0px")))}>ok</button></Link>
-      <button onClick={() =>(store.dispatch(setSlugInput("0px")))}>cancel</button>
+      <button onClick={() =>{store.dispatch(setSlugInput("0px"));store.dispatch(setEdit(false))}}>cancel</button>
     </Box>
   )
 }
