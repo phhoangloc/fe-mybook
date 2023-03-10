@@ -1,6 +1,6 @@
 import Api from "../Api"
 
-const url="http://localhost:4000/"
+const url = process.env.REACT_APP_URL
 
 const getBookTop4New = () => {
     return Api.get(url+'?limit=4&sortbyid=-1')

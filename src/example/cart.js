@@ -60,7 +60,7 @@ export const Cart = () => {
         <CloseIcon onClick={()=>store.dispatch(setCart("0%"))}></CloseIcon>
         <h2>My Cart</h2>
         {dataReturn}
-        {cartData.length?<><button onClick={()=>borrowBook()}>request</button>
+        {cartData && cartData.length?<><button onClick={()=>borrowBook()}>request</button>
         <button onClick={()=>deleteAllCart()}>cancel</button></>:null}
       </Grid>
     </Grid>

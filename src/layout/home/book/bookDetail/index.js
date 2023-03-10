@@ -167,7 +167,7 @@ export const BookDetail = () => {
       <Grid sx={[mode !== "dark" ? Theme.light : Theme.dark]}>
         <Grid container sx={[Style.homepage.BoxBookDetail]}>
           <Grid item sx={[Style.homepage.BoxBookDetail.BoxIn]} xs={12} sm={4}>
-            <img src={imgPre || (book && 'http://localhost:4000/img/bookcover/' + book.img) || Nocover} />
+            <img src={imgPre || (book && process.env.REACT_APP_URL+'img/bookcover/' + book.img) || Nocover} />
             <input type="file" ref={coverpic} style={{ display: "none" }} onChange={(e) => changeCoverPic(e)} ></input>
             <EditIcon onClick={() => coverpic.current.click()}></EditIcon>
             <input type="file" ref={uploadPdf} style={{ display: "none" }} onChange={(e) => changePdfFile(e)} ></input>

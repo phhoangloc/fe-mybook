@@ -1,5 +1,5 @@
 import Api from "../Api"
-const url= "http://localhost:4000/user/"
+const url = process.env.REACT_APP_URL+"user/" 
 const Login=(body)=>{
     return Api.post(url+'login',body)
 }

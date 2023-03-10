@@ -20,7 +20,7 @@ export const Book = (props) => {
 
       <Grid item xs={6} sm={4} md={3} sx={[Style.book.box]} key={index}>
         <Box>
-          <Link to={'/book/' + item.slug} ><img src={'http://localhost:4000/img/bookcover/' + item.img} style={Style.book.box.imgbox.img} /></Link>
+          <Link to={'/book/' + item.slug} ><img src={process.env.REACT_APP_URL+'/img/bookcover/' + item.img} style={Style.book.box.imgbox.img} /></Link>
         </Box>
         <h4 style={Style.book.box.title}>{item.name}</h4>
       </Grid>

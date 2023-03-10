@@ -1,6 +1,6 @@
 import axios from 'axios';
-// import storage from '../storage/Storage';
-const url = "http://localhost:4000/"
+
+const url = process.env.REACT_APP_URL
 const axiosClient = axios.create({
     baseURL: url,
     timeout: 5000, // default is `0` (no timeout)

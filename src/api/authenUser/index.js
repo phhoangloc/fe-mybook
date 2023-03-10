@@ -1,5 +1,5 @@
 import Api from "../Api"
-const url = "http://localhost:4000/userAuthen/"
+const url = process.env.REACT_APP_URL + "userAuthen/" 
 const GetUserAuthen = () => {
     return Api.get(url + 'user')
 }
