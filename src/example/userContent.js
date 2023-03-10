@@ -85,7 +85,7 @@ export const UserContent = (props) => {
             phone: phone || (infor && infor.phone),
 
         }
-        const result = await AuthenUserApi.UpdateProfileInfor(body)
+        const result = await AuthenUserApi.UpdateProfile(body)
         if (result.success) {
             store.dispatch(setPopUp({ status: "open", success: result.success, message: result.msg }))
             setTimeout(() => {
@@ -106,7 +106,7 @@ export const UserContent = (props) => {
                 <Grid container sx={Style.userPage.profile}>
                     <Grid item xs={12} sm={4}>
                         <Grid sx={Style.userPage.profile.imgBox}>
-                            <img src={imgPre || 'http://localhost:4000/img/avata/' + imgPreview || noAvata} />
+                            <img src={imgPre || process.env.REACT_APP_URL+'img/avata/' + imgPreview || noAvata} />
                             <input type="file" ref={avataImg} style={{ display: "none" }} onChange={(e) => { changeAvata(e); setSaveButton(true) }} ></input>
                             <EditIcon onClick={() => avataImg.current.click()}></EditIcon>
                         </Grid>

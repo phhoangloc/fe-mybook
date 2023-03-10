@@ -185,8 +185,8 @@ export const BookDetail = () => {
       <Grid sx={[mode !== "dark" ? Theme.light : Theme.dark]}>
         <Grid container sx={[Style.homepage.BoxBookDetail]}>
           <Grid item sx={[Style.homepage.BoxBookDetail.BoxIn]} xs={12} sm={4}>
-            <img src={book && 'http://localhost:4000/img/bookcover/' + book.img} />
-            <a href={book && book.pdf && 'http://localhost:4000/pdf/' + book.pdf}><PictureAsPdfIcon /></a>
+            <img src={book && process.env.REACT_APP_URL+'img/bookcover/' + book.img} />
+            <a href={book && book.pdf && process.env.REACT_APP_URL+'pdf/' + book.pdf}><PictureAsPdfIcon /></a>
             <AddShoppingCartIcon onClick={() => addShoppingCart()} />
           </Grid>
           <Grid item sx={[Style.homepage.BoxBookDetail.BoxIn]} xs={12} sm={8}>

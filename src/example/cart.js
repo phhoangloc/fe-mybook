@@ -40,10 +40,10 @@ export const Cart = () => {
     store.dispatch(setCart("0"))
   }
 
-  const borrowBook= ()=>{
-    cartData.map((item,index)=>{
-        console.log(item._id)
-    })
+  const borrowBook= async()=>{
+    const borowedbooks = await cartData.map((item)=> item._id)
+    const result = await AuthenUserApi.UpdateProfileBorowedbooks(borowedbooks)
+    console.log(result)
   }
   const dataReturn=cartData && cartData.map((item,index)=>
     <Grid key={index} sx={[Style.cart.box,mode !== "dark" ? Theme.light.boxIn : Theme.dark.boxIn]}>

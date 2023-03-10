@@ -24,8 +24,12 @@ const UpdateAvata = (fileImage) => {
     return Api.post(url + 'user/avata/', formdata)
 }
 
-const UpdateProfileInfor = (infor) => {
+const UpdateProfile = (infor) => {
     const body = { infor }
+    return Api.put(url + "user/a", body)
+}
+const UpdateProfileBorowedbooks = (borowedbooks) => {
+    const body = { borowedbooks }
     return Api.put(url + "user/a", body)
 }
 const UpdateBook = (id, body) => {
@@ -53,12 +57,13 @@ const AuthenUserApi = {
     UpdateBook,
     DeleteBook,
     UpdateAvata,
-    UpdateProfileInfor,
+    UpdateProfile,
     UpdatePdf,
     borrowBook,
     viewcart,
     deletecart,
-    deleteAllcart
+    deleteAllcart,
+    UpdateProfileBorowedbooks
 }
 
 export default AuthenUserApi

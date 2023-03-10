@@ -45,7 +45,7 @@ export const Header = (props) => {
       <Grid>{mode.mode !== "dark" ? <LightModeIcon sx={Style.header.icon} onClick={() => changeMode()} /> : <DarkModeIcon sx={Style.header.icon} onClick={() => changeMode()} />}</Grid>
       <Grid>
         {loginSuccess.success ?
-          <img src={`http://localhost:4000/img/avata/${avata}`}
+          <img src={process.env.REACT_APP_URL+`img/avata/${avata}`}
             onClick={() => {
               setOpacity(opacity !== "1" ? "1" : "0")
               setZindex(zindex !== "5" ? "5" : "-1")
