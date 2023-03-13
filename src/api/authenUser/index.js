@@ -28,8 +28,8 @@ const UpdateProfile = (infor) => {
     const body = { infor }
     return Api.put(url + "user/a", body)
 }
-const UpdateProfileBorowedbooks = (borowedbooks) => {
-    const body = { borowedbooks }
+const UpdateProfileBorowedbooks = (cart) => {
+    const body = { cart }
     return Api.put(url + "user/a", body)
 }
 const UpdateBook = (id, body) => {
@@ -42,7 +42,19 @@ const borrowBook = (body) => {
     return Api.post(url + "/borrow", body)
 }
 const viewcart = () => {
+    return Api.get(url + "/borrow?process=add")
+}
+const viewcartProfile = () => {
     return Api.get(url + "/borrow")
+}
+const viewRequestCart = () => {
+    return Api.get(url + "/requestCart")
+}
+const sendMailToRequestBorrowBook = (body) => {
+    return Api.post(url + "/sendmailtorequestborrowbook",body)
+}
+const updatecart = (id,body) => {
+    return Api.put(url + "/updateCart/"+id,body)
 }
 const deletecart = (id) => {
     return Api.delete(url + "/borrow/"+id)
@@ -61,9 +73,13 @@ const AuthenUserApi = {
     UpdatePdf,
     borrowBook,
     viewcart,
+    sendMailToRequestBorrowBook,
+    updatecart,
     deletecart,
     deleteAllcart,
-    UpdateProfileBorowedbooks
+    UpdateProfileBorowedbooks,
+    viewcartProfile,
+    viewRequestCart,
 }
 
 export default AuthenUserApi

@@ -83,6 +83,7 @@ const Style = {
         transition: "all 0.5s",
         overflow: "hidden",
         paddingTop: "50px",
+        zIndex:"11",
         title: {
             padding: "10px 5px",
             boxSizing: "border-box",
@@ -376,6 +377,57 @@ const Style = {
                         }
                     },
                     input: { width: "100%",marginLeft:"10px"},
+                }
+            },
+            cart:{
+                item:{
+                border:"1px solid",
+                padding:"20px 5%"
+                },
+                processAll:{
+                    width:"max-content",
+                    margin:"0 auto",
+                    process:{
+                        width:"30px",
+                        height:"30px",
+                        borderRadius:"50%",
+                        background:"white",
+                        border:"2px solid",
+                        margin:"20px auto 10px",
+                    },
+                    processblue:{
+                        width:"30px",
+                        height:"30px",
+                        borderRadius:"50%",
+                        background:color3,
+                        border:"2px solid",
+                        margin:"20px auto 10px",
+                    },
+                    ptext: {
+                        margin:"0",
+                        textAlign:"right",
+                        fontWeight:"bold"
+                    },
+                    ptextnone:{
+                        opacity:"0",
+
+                    }
+                },
+                h2: {
+                    textAlign: "center",
+                },
+                h3: {
+                    margin:"0px",
+                },
+                h4: {
+                    margin:"0px",
+                    span:{
+                        fontSize:"x-large"
+                    }
+                },
+                button:{
+                    width:"100px",
+                    height:"30px",
                 }
             }
         }

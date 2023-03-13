@@ -12,6 +12,7 @@ import { setPopUp } from '../redux/reducer/popUpReducer';
 import { setEdit } from '../redux/reducer/editReducer';
 import noAvata from '../asset/img/loginavata.png'
 import { Input } from '../component/input';
+import { UserCart } from './userCart';
 export const UserContent = (props) => {
 
     const { i, data } = props
@@ -27,6 +28,7 @@ export const UserContent = (props) => {
 
     const userbooks = data && data.books
     const infor = data && data.infor
+    const cart = data && data.cart
     const imgPreview = data && data.infor && data.infor.avata
 
     const ClickDelete = async (id) => {
@@ -103,6 +105,7 @@ export const UserContent = (props) => {
         <Grid sx={[Style.userPage.content]}>
             {i === 0 ? <h1>you re not login</h1> : null}
             {i === 1 ?
+                <>
                 <Grid container sx={Style.userPage.profile}>
                     <Grid item xs={12} sm={4}>
                         <Grid sx={Style.userPage.profile.imgBox}>
@@ -145,7 +148,9 @@ export const UserContent = (props) => {
                         />
                         {savebutton ? <button onClick={() => updateProfile(data._id)}>save</button> : null}
                     </Grid>
-                </Grid> : null}
+                </Grid>
+                <UserCart data={cart}/>
+                </> : null}
             {i === 2 ?
                 <Grid sx={[Style.userPage.content.book]}>
                     <h2>Book</h2>

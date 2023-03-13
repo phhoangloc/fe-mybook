@@ -41,9 +41,22 @@ export const Cart = () => {
   }
 
   const borrowBook= async()=>{
-    const borowedbooks = await cartData.map((item)=> item._id)
-    const result = await AuthenUserApi.UpdateProfileBorowedbooks(borowedbooks)
-    console.log(result)
+    const bodyprocess={process:"request"}
+    const cart = await cartData.map((item)=> item._id)
+    await AuthenUserApi.UpdateProfileBorowedbooks(cart)
+    await AuthenUserApi.updatecart(cart,bodyprocess)
+    await cartData.map(async (item)=> {
+      const book = await item.books && item.books.map(book=>book.name)
+      const body={
+        borrower:item.borrower.username,
+        lender:item.borrower.username,
+        lenderEmail:item.lender.email,
+        borrowerEmail:item.borrower.email,
+        book:book
+      }
+      AuthenUserApi.sendMailToRequestBorrowBook(body)
+    })
+
   }
   const dataReturn=cartData && cartData.map((item,index)=>
     <Grid key={index} sx={[Style.cart.box,mode !== "dark" ? Theme.light.boxIn : Theme.dark.boxIn]}>
